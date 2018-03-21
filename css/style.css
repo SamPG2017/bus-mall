@@ -1,6 +1,4 @@
 
-
-
 /* Style the tab */
 .tab {
   overflow: hidden;
@@ -37,9 +35,40 @@
   border-top: none;
 }
 
-
-
-div.prod-images {
-  display: inline-block;
-  width: auto;
+section .product-section {
+  height: 400px;
 }
+
+.product-section {
+  float: left;
+}
+
+div #prod-image {
+  border: 1px solid white;
+  border: border-box;
+  width: 300px;
+}
+
+img.resize {
+  height: auto;
+  width: 100px;
+}
+
+img.prod-pic1 {
+  background-color:rgba(228, 228, 222, 0.884);
+  border:1px solid #767779;
+  float: left;  
+  padding:1px;  
+}
+
+img.prod-pic3 {
+  background-color:rgba(228, 228, 222, 0.884);
+  border:1px solid #767779;
+  float: right;
+  padding:1px;  
+} 
+
+.voting-button {
+  width: 80px;
+}
+

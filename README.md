@@ -12,3 +12,7 @@ https://www.w3schools.com/howto/howto_js_tabs.asp
 
 ===============================================================
 
+Made borders around images using tips from:
+https://css-tricks.com/using-css-for-image-borders/
+
+===============================================================
