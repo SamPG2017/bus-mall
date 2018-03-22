@@ -35,6 +35,16 @@
   border-top: none;
 }
 
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Cabin Condensed', sans-serif;
+  margin: 5em;
+}
+
+body div h1 h2 {
+  text-align: center;
+}
+
 section .product-section {
   height: 400px;
 }
@@ -52,6 +62,10 @@ div #prod-image {
 img.resize {
   height: auto;
   width: 100px;
+}
+
+.body .img .logo {
+  height: 50px;
 }
 
 img.prod-pic1 {

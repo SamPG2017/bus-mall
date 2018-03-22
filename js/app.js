@@ -7,31 +7,7 @@
 // STRETCH GOAL
 // https://www.w3schools.com/howto/howto_js_tabs.asp
 
-// ADD NAV TABS AND FUNCTIONALITY FOR THOSE TABS
-function openPage(evt, pageName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the 
-  // button that opened the tab
-  document.getElementById(pageName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
 */
-debugger;
-
 // DECLARE ALL GLOBAL VARIABLES
 
 // ARRAY TO HOLD ALL PRODUCT OBJECTS
@@ -43,7 +19,7 @@ Product.lastDisplayed = [];           // used on lines 139 - 141
 // product names for bar chart labels
 var productNames = [];                // used on line 69 w/in constructor
 
-// goat votes for bar chart data
+// product votes for bar chart data
 var productClicks = [];               // used on line 227
 
 // click tracker
@@ -72,40 +48,43 @@ function Product(filepath, imgname) {
   this.imgname = imgname;
   this.numDisplayed = 0;          // numberTimesViewed
   this.numClicked = 0;            // numberTimesClicked
+  this.productLine = productline;
   productNames.push(this.imgname);
   Product.allProducts.push(this);
 }
+
 console.log(" LINE 76 - Object: " + Product.imgname);
 
 // SET UP ALL ARGUMENTS FOR NEW OBJECTS
 // New instances of products
-new Product('img/bag.jpg', 'R2D2 Bag');
-new Product('img/banana.jpg', 'Banana slicer');
-new Product('img/bathroom.jpg', 'Tablet and TP Holder');
-new Product('img/boots.jpg', 'Yellow Boots with no Toes');
-new Product('img/breakfast.jpg', 'All In One Toaster');
+new Product('img/bag.jpg', 'R2D2 Bag', 'luggage');
+new Product('img/banana.jpg', 'Banana slicer', 'kitchen');
+new Product('img/bathroom.jpg', 'Tablet and TP Holder', 'bathroom');
+new Product('img/boots.jpg', 'Yellow Boots with no Toes', 'shoes');
+new Product('img/breakfast.jpg', 'All In One Toaster', 'kitchen');
 
-new Product('img/bubblegum.jpg', 'Meatball Bubble Gum');
-new Product('img/chair.jpg', 'Chair with Convex Seat');
-new Product('img/cthulhu.jpg', 'Cthulhu Figurine');
-new Product('img/dog-duck.jpg', 'Dog with Duck Beak');
-new Product('img/dragon.jpg', 'Dragon Meat in a Can');
+new Product('img/bubblegum.jpg', 'Meatball Bubble Gum', 'edible');
+new Product('img/chair.jpg', 'Chair with Convex Seat', 'furniture');
+new Product('img/cthulhu.jpg', 'Cthulhu Figurine', 'toy');
+new Product('img/dog-duck.jpg', 'Dog with Duck Beak', 'pets');
+new Product('img/dragon.jpg', 'Dragon Meat in a Can', 'edible');
 
-new Product('img/pen.jpg', 'Utensil Pen');
-new Product('img/pet-sweep.jpg', 'Pet Cleaning Slippers');
-new Product('img/scissors.jpg', 'Pizza Scissors');
-new Product('img/shark.jpg', 'Shark Sleeping Bag');
-new Product('img/sweep.png', 'Baby Onesie Sweeper');
+new Product('img/pen.jpg', 'Utensil Pen', 'kitchen');
+new Product('img/pet-sweep.jpg', 'Pet Cleaning Slippers', 'pets');
+new Product('img/scissors.jpg', 'Pizza Scissors', 'kitchen');
+new Product('img/shark.jpg', 'Shark Sleeping Bag', 'soft-goods');
+new Product('img/sweep.png', 'Baby Onesie Sweeper', 'kids');
 
-new Product('img/tauntaun.jpg', 'Tauntaun Sleeping Bag');
-new Product('img/unicorn.jpg', 'Unicorn Meat in a Can');
-new Product('img/usb.gif', 'USB Tentacle');
-new Product('img/water-can.jpg', 'Recursive Watering Can');
-new Product('img/wine-glass.jpg', 'Abnormal Wine Glass');
+new Product('img/tauntaun.jpg', 'Tauntaun Sleeping Bag', 'soft-goods');
+new Product('img/unicorn.jpg', 'Unicorn Meat in a Can', 'edible');
+new Product('img/usb.gif', 'USB Tentacle', 'tech');
+new Product('img/water-can.jpg', 'Recursive Watering Can', 'gardening');
+new Product('img/wine-glass.jpg', 'Abnormal Wine Glass', 'kitchen');
 
 // access the element from the DOM
 // when accessing from the DOM, var keyword is necessary
 var imgElement = document.getElementById('prod-pic');
+
 
 // add event listener
 img1.addEventListener('click', clickHandler);
