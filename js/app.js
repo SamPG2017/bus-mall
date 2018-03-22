@@ -14,7 +14,7 @@
 Product.allProducts = [];             // used on line 70 in object constructor
 
 // array to keep track of previously displayed images
-Product.lastDisplayed = [];           // used on lines 139 - 141
+var lastDisplayed = [];           // used on lines 139 - 141
 
 // product names for bar chart labels
 var productNames = [];                // used on line 69 w/in constructor
@@ -37,7 +37,7 @@ var img3 = document.getElementById("prod-pic3");
 // var leftImg = document.getElementById('left');
 
 // access the section element from the DOM
-var sectionElement = document.getElementById('product-section');
+var sectionElement = document.getElementById('prod-images');
 
 // access the unordered list element from the DOM
 var unorderedListElement = document.getElementById('results');
@@ -48,16 +48,14 @@ function Product(filepath, imgname) {
   this.imgname = imgname;
   this.numDisplayed = 0;          // numberTimesViewed
   this.numClicked = 0;            // numberTimesClicked
-  this.productLine = productline;
+  // this.productLine = productline;
   productNames.push(this.imgname);
   Product.allProducts.push(this);
 }
 
-console.log(" LINE 76 - Object: " + Product.imgname);
-
 // SET UP ALL ARGUMENTS FOR NEW OBJECTS
 // New instances of products
-new Product('img/bag.jpg', 'R2D2 Bag', 'luggage');
+new Product('img/bag.jpg', 'R2D2 Bag' /*, 'luggage' */);
 new Product('img/banana.jpg', 'Banana slicer', 'kitchen');
 new Product('img/bathroom.jpg', 'Tablet and TP Holder', 'bathroom');
 new Product('img/boots.jpg', 'Yellow Boots with no Toes', 'shoes');
@@ -83,13 +81,16 @@ new Product('img/wine-glass.jpg', 'Abnormal Wine Glass', 'kitchen');
 
 // access the element from the DOM
 // when accessing from the DOM, var keyword is necessary
-var imgElement = document.getElementById('prod-pic');
+var imgElement1 = document.getElementById('prod-pic1');
+var imgElement2 = document.getElementById('prod-pic2');
+var imgElement3 = document.getElementById('prod-pic3');
 
 
 // add event listener
-img1.addEventListener('click', clickHandler);
-img2.addEventListener('click', clickHandler);
-img3.addEventListener('click', clickHandler);
+//sectionElement.addEventListener('click', clickHandler);
+imgElement1.addEventListener('click', clickHandler);
+imgElement2.addEventListener('click', clickHandler);
+imgElement3.addEventListener('click', clickHandler);
 
 // randomly display three pictures
 function randomProduct() {
@@ -102,9 +103,9 @@ function randomProduct() {
   while (randomLeft === randomRight
     || (randomLeft === randomMid)
     || (randomMid === randomRight)
-    || Product.lastDisplayed.includes(randomLeft)
-    || Product.lastDisplayed.includes(randomMid)
-    || Product.lastDisplayed.includes(randomRight)) {
+    || lastDisplayed.includes(randomLeft)
+    || lastDisplayed.includes(randomMid)
+    || lastDisplayed.includes(randomRight)) {
 
     console.log('Duplicate was caught here');
 
@@ -115,14 +116,14 @@ function randomProduct() {
 
   // Now that we know they are unique numbers, display the three
   // unique images on the screen
-  img1.src = Product.allProducts[randomLeft].filepath;
-  img1.alt = Product.allProducts[randomLeft].imgname;
+  imgElement1.src = Product.allProducts[randomLeft].filepath;
+  imgElement1.alt = Product.allProducts[randomLeft].imgname;
 
-  img2.src = Product.allProducts[randomMid].filepath;
-  img2.alt = Product.allProducts[randomMid].imgname;
+  imgElement2.src = Product.allProducts[randomMid].filepath;
+  imgElement2.alt = Product.allProducts[randomMid].imgname;
 
-  img3.src = Product.allProducts[randomRight].filepath;
-  img3.alt = Product.allProducts[randomRight].imgname;
+  imgElement3.src = Product.allProducts[randomRight].filepath;
+  imgElement3.alt = Product.allProducts[randomRight].imgname;
 
   // incremented the number of times displayed
   Product.allProducts[randomLeft].numDisplayed++;
@@ -133,11 +134,12 @@ function randomProduct() {
   // APPROACH 1:
 
   // create array to hold displayed items
-  Product.lastDisplayed = [];
+  lastDisplayed = [];
+
   // populate array with .push, using left, mid, right 
-  Product.lastDisplayed.push(randomLeft);
-  Product.lastDisplayed.push(randomMid);
-  Product.lastDisplayed.push(randomRight);
+  lastDisplayed.push(randomLeft);
+  lastDisplayed.push(randomMid);
+  lastDisplayed.push(randomRight);
 }                     // END OF randomProduct FUNCTION
 
 // CREATE EVENT TO HANDLE CLICK ON IMAGE
@@ -158,29 +160,36 @@ function clickHandler(event) {
     }
   }                                 // END CLICK HANDLER FUNCTION
 
+
   //  CLICK COUNTER
   //  Check the click counter
   if (Product.totalClicks < totalGuesses) {
 
+    randomProduct();             // commented out to test
+
+  } else {
+
     // turn off event listener
-    sectionElement.removeEventListener('click', clickHandler);
+    //sectionElement.removeEventListener('click', clickHandler);
+    imgElement1.removeEventListener('click', clickHandler);
+    imgElement2.removeEventListener('click', clickHandler);
+    imgElement3.removeEventListener('click', clickHandler);
 
     // if less than 24, display more products
     showResults();
 
     // display the fully populated chart
     renderChart();
-  } else {
     // if less than 24, display a new set of product images
 
-    randomProduct();             // commented out to test
   }
 }                         // END CLICK COUNTER IF STATEMENT
+
 
 //////////////////////////////////////////////
 // CREATE FUNCTION TO DISPLAY RESULTS TO WEBPAGE
 function showResults() {
-  console.log("You clicked " + Product.totalClicks + "times !");
+  console.log("You clicked " + Product.totalClicks + " times !");
 
   // CREATE SECONDARY FUNCTION TO UPDATE VOTECLICKS FOR PRODUCT
   function updateClicks() {
@@ -197,24 +206,26 @@ function showResults() {
 randomProduct();
 
 ////////////////////////////////////////////////////////////
-/*
+
 // use Chart.js to create a bar chart
 function renderChart() {
   // access the canvas element from the DOM using a var
-  var context = document.getElementById('goat-chart').getContext('2d');
-  var context = document.getElementById('product-chart').getContext('2d');
+  // var context = document.getElementById('goat-chart').getContext('2d');
+  var context = document.getElementById('myChart');
 
-  var arrayOfColors = ['red', 'green', 'yellow'];
+  var arrayOfColors = ['#eeeeee', '#111111', '#525252', '#eeeeee', '#111111', '#525252', '#eeeeee', '#111111', '#525252', '#eeeeee', '#111111', '#525252', '#eeeeee', '#111111', '#525252', '#eeeeee', '#111111', '#525252', '#eeeeee', '#111111', '#525252', '#eeeeee', '#111111', '#525252', '#eeeeee'];
+
 
   var productChart = new Chart(context, {
     type: 'bar',
     data: {
       labels: productNames, // array of product names, populated above in Global Variable section
-      datasets: [{
-        label: "Clicks on Product",
-        data: productClicks,
-        backgroundColor: arrayOfColors,
-      }]
+      datasets: [
+        {
+          label: "Clicks on Product",
+          data: productClicks,
+          backgroundColor: arrayOfColors,
+        }]
       // labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
     },
     options: {
@@ -226,6 +237,12 @@ function renderChart() {
         }]
       }
     }
-  })
+  });
+
 }
-*/
+
+
+
+
+
+
