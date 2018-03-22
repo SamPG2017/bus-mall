@@ -7,11 +7,12 @@ Part of your assignment today is to write your own user stories. Be sure to cons
 
 Marketing Research Team:
 
-** needs a quick way to tell which products have 
-the most number of clicks 
-** needs this information in an organized list.
-** wants the page displayed using the style sheet it took them 3 years to agree to use - fonts, colors, and general "feel".
-** wants to drive customers to purchase products in the future
+As the marketing director, I need a quick way to tell which products have 
+the most number of clicks.
+As the marketing director, I need to be able to show my boss a chart that summarizes those results.
+As the marketing director, I want this information in an organized container and I prefer a chart format.
+As a designer, I want the page displayed using the style sheet it took me 3 years to fully create - fonts, colors, and general "feel".
+As the market research analyst, I want to understand what might drive customers to purchase products in the future.
 
 
 Developer:

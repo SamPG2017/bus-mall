@@ -1,41 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <header>
-    <title> Bus Mall </title>
-  </header>
+<header>
+  <title> Bus Mall Analysis </title>
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed:600|Source+Sans+Pro:600" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css" />
+</header>
 
-  <body>
-    <section id="Header">
-     <div id="header"></div>
-       <img src="" id="Logo" />
-       <h1> Bus Mall Trials </h1>
-      <nav>
-        <a href="index.html"> Home </a> 
-        <a href="products.html"> Products </a> 
-        <a href="about.html"> About  </a>         
-        <a href="contact.html"> Contact </a>
-      </nav>
+
+<body>
+  <div class="tab">
+    <a href="index.html">
+      <button> Home </button>
+    </a>
+    <a href="contact.html">
+      <button> Contact Us </button>
+    </a>
+    <a href="about.html">
+      <button> About Us </button>
+    </a>
+    <a href="products.html">
+      <button> Product Trial Analysis </button>
+    </a>
+  </div>
+
+  <section id="Header">
+    <div id="header"></div>
+    <h1> Bus Mall Trials Analysis </h1>
     </div>
-    </section>
+  </section>
 
-  <section>
+  <img src="https://image.flaticon.com/icons/svg/62/62014.svg" id="logo" />
+
+  <section id="prod-images">
+    <img id="prod-pic1" src='' alt='' />
+    <img id="prod-pic2" src='' alt='' />
+    <img id="prod-pic3" src='' alt='' />
+  </section>
+
   <div id="results">
+    <canvas id="myChart" width="400" height="400"></canvas>
     <title> Results </title>
-    <ul>
-      <li>      </li>
-      <li>      </li>
-      <li>      </li>
-      <li>      </li>
-      <li>      </li>
-      <li>      </li>
-    </ul>
   </div>
 
-  <div id="prod-images">
-    <img id="prod-pic" src='' alt='' />
-    <img id="prod-pic" src='' alt='' />
-    <img id="prod-pic" src='' alt='' />
-  </div>
 
   <div id="voting-button">
     <button> VOTE </button>
@@ -49,12 +55,18 @@
 
   <div id="footer">
     <footer>
-
+      Copyright &copy; 2018
     </footer>
   </div>
-    <script src="js/app.js"> </script>
-  </body>
 
+  <script src="path/to/chartjs/dist/Chart.js"></script>
+  <script>
+    var clickChart = new Chart(context, );
+    // var clickChart = new Chart(context, { ...}); 
+  </script>
+
+  <script src="js/app.js"> </script>
+</body>
 
 
 </html>
