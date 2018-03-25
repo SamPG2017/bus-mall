@@ -2,36 +2,6 @@
 
 var totalGuesses = 25;
 
-// alert("Can you see this ?");
-// debugger;
-
-/*
-// STRETCH GOAL
-// https://www.w3schools.com/howto/howto_js_tabs.asp
-
-// ADD NAV TABS AND FUNCTIONALITY FOR THOSE TABS
-function openPage(evt, pageName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(pageName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-*/
-
 // ARRAY TO HOLD ALL PRODUCT OBJECTS
 Product.allProducts = [];
 
@@ -45,54 +15,31 @@ function Product(filepath, name) {
   Product.allProducts.push(this);
 }
 
-
-/////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////
-
-
-// CREATE FUNCTION FOR DETERMINING WHETHER ARRAY
-// ELEMENTS MATCH EACH OTHER
-// DO NOT DISPLAY MATCHING ELEMENTS
-// RUN THIS THREE TIMES AND RETURN THREE
-// DIFFERENT ARRAY ELEMENTS
-
-
 // COMPARE VALUES WITHIN ARRAY TO OTHER VALUES WITHIN ARRAY
 var randIndex = [];
 
-function randomProd(){
-  var randomIndex = Math.floor(Math.random () * Product.allProducts.length);
-  randIndex.push(randomProd); 
+function randomProd() {
+  var randomIndex = Math.floor(Math.random() * Product.allProducts.length);
+  randIndex.push(randomProd);
 }
 
 var begRandArray[0] = 0;
 var begRandArray[1] = 0;
 var begRandArray[2] = 0;
 
-// FUNCTION TO PUSH RANDOM ELEMENTS INTO RandIndex ARRAY
-// function createRandIndex (){
-// randIndex[0] = randomProd() 
-// }
-
 for (var i = 0; i < 3; i++) {
   randomProd();
-  randomIndex.push;  
-  }
+  randomIndex.push;
+}
 
 RandIndex.push(new number);
-
-
 
 // CHECK randIndex[0] against randIndex[1] and randIndex[2] for equality
 While randIndex[0] === randIndex[1] || randIndex[1] === randIndex[2];
 
-// REASSIGN VARIABLES TO TAKE NEW VALUES
 begRandArray1 = randomIndex[0];
 begRandArray2 = randomIndex[1];
 begRandArray3 = randomIndex[2];
-
-//////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////
 
 // NEW INSTANCES OF PRODUCTS
 new Product('img/bag.jpg', 'R2D2 Bag', '1');
@@ -125,14 +72,11 @@ var imgElement = document.getElementById('prod-pic');
 // ADD EVENT LISTENER
 imgElement.addEventListener('click', randomProd);
 
-// function randomProd(){
-//   var randomIndex = Math.floor(Math.random () * Product.allProducts.length);
-
 //  FOR LOOP TO ITERATE OVER THE ARRAY AND RENDER ONE PRODUCT
 imgElement.src = Product.allProducts[randomIndex].filepath;
 console.log("Prod.allProducts[randomIndex].filepath: " + Product.allProducts[randomIndex].filepath);
 imgElement.alt = Product.allProducts[randomIndex].imgname;
-}
+
 
 // RENDER IMAGE ON PAGE LOAD (CALL FUNCTION)
 randomProd();
